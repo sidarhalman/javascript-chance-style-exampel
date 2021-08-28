@@ -1,0 +1,55 @@
+* {
+    text-align: center;
+}
+
+@mixin flexBox($items, $justify) {
+    display: flex;
+    align-items: $items;
+    justify-content: $justify;
+    flex-wrap: wrap;
+}
+
+@mixin boxing() {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+@mixin sizing ($width, $height) {
+    height: $height;
+    width: $width;
+}
+
+.container {
+    @include flexBox (center, center);
+    height: 100%;
+    .mobile-phone {
+        @include sizing (300px, 450px);
+        @include boxing();
+        .screen {
+            @include boxing();
+            @include sizing (280px, 200px);
+            background-color: black;
+        }
+        .buttons {
+            .on-off {
+                @include boxing();
+                @include sizing(280px, 50px);
+                @include flexBox(center, space-around);
+                input {
+                    @include boxing();
+                    @include sizing(60px, 25px);
+                }
+            }
+            .numbers {
+                @include boxing();
+                @include flexBox(center, space-around);
+                .number {
+                    @include boxing();
+                    @include sizing(70px, 20px);
+                }
+            }
+        }
+    }
+}
